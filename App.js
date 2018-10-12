@@ -1,13 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-export default class App extends React.Component {
+import React, {Component} from 'react';
+import {Dimensions, Platform, StyleSheet, Text, View} from 'react-native';
+import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
+
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
+
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
+
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Svg xmlns="http://www.w3.org/2000/Svg" viewBox="0 0 512 512">
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
+        <Text>Hello, there</Text>
+        <Svg height={windowHeight * 0.1} width={windowWidth * 0.1} xmlns="http://www.w3.org/2000/Svg" viewBox="0 0 512 512">
           <Defs>
             <ClipPath id="clip-1">
               <Path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></Path>
@@ -32,8 +53,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
